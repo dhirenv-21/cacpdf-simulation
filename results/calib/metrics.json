@@ -1,0 +1,1385 @@
+{
+ "per_scenario": [
+  {
+   "scenario": "A",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 19,
+   "steps_sd": 0.0,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "A",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 20.3,
+   "steps_sd": 2.677,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 1.3,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "B",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 20,
+   "FP": 0,
+   "FN": 0,
+   "TN": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "alert_runs": 20,
+   "high_alert_runs": 16,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 34.45,
+   "steps_sd": 1.572,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": 0.25,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "B",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 16,
+   "FP": 0,
+   "FN": 4,
+   "TN": 0,
+   "precision": 1.0,
+   "recall": 0.8,
+   "f1": 0.889,
+   "alert_runs": 16,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 16,
+   "steps_mean": 38.4,
+   "steps_sd": 2.326,
+   "distance_mean": 23.217,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0.1,
+   "uncertain_steps_mean": 3.65,
+   "latency_mean": 1.438,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "C",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 0,
+   "FP": 20,
+   "FN": 0,
+   "TN": 0,
+   "precision": 0.0,
+   "recall": null,
+   "f1": 0.0,
+   "alert_runs": 20,
+   "high_alert_runs": 4,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 0,
+   "steps_mean": 33.95,
+   "steps_sd": 4.548,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "C",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 35.55,
+   "steps_sd": 1.276,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 16.55,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "D",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 0,
+   "FP": 20,
+   "FN": 0,
+   "TN": 0,
+   "precision": 0.0,
+   "recall": null,
+   "f1": 0.0,
+   "alert_runs": 20,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 0,
+   "steps_mean": 35.2,
+   "steps_sd": 1.673,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "D",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 37,
+   "steps_sd": 1.654,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 18,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "E",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 0,
+   "steps_mean": 19,
+   "steps_sd": 0.0,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 6.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "E",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 19,
+   "steps_sd": 0.0,
+   "distance_mean": 23.142,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "F",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 0,
+   "steps_mean": 19,
+   "steps_sd": 0.0,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 18.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "F",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 0,
+   "FP": 0,
+   "FN": 0,
+   "TN": 20,
+   "precision": null,
+   "recall": null,
+   "f1": null,
+   "alert_runs": 0,
+   "high_alert_runs": 0,
+   "goal_rate": 0.0,
+   "safe_stops": 20,
+   "expected_met": 20,
+   "steps_mean": 1,
+   "steps_sd": 0.0,
+   "distance_mean": 0.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": null,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "G",
+   "method": "baseline",
+   "runs": 20,
+   "TP": 20,
+   "FP": 0,
+   "FN": 0,
+   "TN": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "alert_runs": 20,
+   "high_alert_runs": 20,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 36.7,
+   "steps_sd": 1.261,
+   "distance_mean": 19.0,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": 0,
+   "collisions": 0,
+   "safety_overrides": 0
+  },
+  {
+   "scenario": "G",
+   "method": "proposed",
+   "runs": 20,
+   "TP": 20,
+   "FP": 0,
+   "FN": 0,
+   "TN": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "alert_runs": 20,
+   "high_alert_runs": 20,
+   "goal_rate": 1.0,
+   "safe_stops": 0,
+   "expected_met": 20,
+   "steps_mean": 21.1,
+   "steps_sd": 1.252,
+   "distance_mean": 23.728,
+   "static_exposure_mean": 0.0,
+   "event_zone_steps_mean": 0,
+   "uncertain_steps_mean": 0,
+   "latency_mean": 1.05,
+   "collisions": 0,
+   "safety_overrides": 0
+  }
+ ],
+ "pooled": {
+  "proposed": {
+   "runs": 140,
+   "TP": 36,
+   "FP": 0,
+   "FN": 4,
+   "TN": 100,
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.947
+  },
+  "baseline": {
+   "runs": 140,
+   "TP": 40,
+   "FP": 40,
+   "FN": 0,
+   "TN": 60,
+   "precision": 0.5,
+   "recall": 1.0,
+   "f1": 0.667
+  }
+ },
+ "identical_inputs": true,
+ "pairs_compared": 140,
+ "fault_trust": [
+  {
+   "fault": "delayed",
+   "updates": 20,
+   "delta_mean": -0.026,
+   "trust_before_mean": 0.808,
+   "trust_after_mean": 0.782,
+   "trust_after_10_steps_mean": 0.766
+  },
+  {
+   "fault": "duplicate",
+   "updates": 20,
+   "delta_mean": -0.23,
+   "trust_before_mean": 0.657,
+   "trust_after_mean": 0.427,
+   "trust_after_10_steps_mean": 0.43
+  },
+  {
+   "fault": "false_detection",
+   "updates": 224,
+   "delta_mean": -0.007,
+   "trust_before_mean": 0.779,
+   "trust_after_mean": 0.772,
+   "trust_after_10_steps_mean": 0.732
+  },
+  {
+   "fault": "implausible_position",
+   "updates": 20,
+   "delta_mean": -0.2,
+   "trust_before_mean": 0.437,
+   "trust_after_mean": 0.237,
+   "trust_after_10_steps_mean": 0.239
+  },
+  {
+   "fault": "invalid_value",
+   "updates": 20,
+   "delta_mean": -0.25,
+   "trust_before_mean": 0.711,
+   "trust_after_mean": 0.461,
+   "trust_after_10_steps_mean": 0.464
+  },
+  {
+   "fault": "low_confidence",
+   "updates": 20,
+   "delta_mean": 0.004,
+   "trust_before_mean": 0.816,
+   "trust_after_mean": 0.82,
+   "trust_after_10_steps_mean": 0.83
+  },
+  {
+   "fault": "missing",
+   "updates": 20,
+   "delta_mean": -0.04,
+   "trust_before_mean": 0.784,
+   "trust_after_mean": 0.744,
+   "trust_after_10_steps_mean": 0.744
+  },
+  {
+   "fault": "spurious_detection",
+   "updates": 6,
+   "delta_mean": 0.004,
+   "trust_before_mean": 0.814,
+   "trust_after_mean": 0.818,
+   "trust_after_10_steps_mean": 0.826
+  },
+  {
+   "fault": "stale_replay",
+   "updates": 20,
+   "delta_mean": -0.15,
+   "trust_before_mean": 0.807,
+   "trust_after_mean": 0.657,
+   "trust_after_10_steps_mean": 0.429
+  }
+ ],
+ "penalties_without_injected_fault": [
+  {
+   "scenario": "D",
+   "source_id": "range-1",
+   "reason": "repeated_disagreement:camera-1",
+   "count": 70,
+   "total_delta": -2.1
+  }
+ ],
+ "failures": [
+  {
+   "run_id": "B_proposed_seed0",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "UNCERTAIN",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "B_proposed_seed4",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "UNCERTAIN",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "B_proposed_seed5",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "UNCERTAIN",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "B_proposed_seed19",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "UNCERTAIN",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed0",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed1",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed2",
+   "failed_checks": [
+    "alert",
+    "no_high_alert"
+   ],
+   "max_state": "HIGH_ALERT",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed3",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed4",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed5",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed6",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed7",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed8",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed9",
+   "failed_checks": [
+    "alert",
+    "no_high_alert"
+   ],
+   "max_state": "HIGH_ALERT",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed10",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed11",
+   "failed_checks": [
+    "alert",
+    "no_high_alert"
+   ],
+   "max_state": "HIGH_ALERT",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed12",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed13",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed14",
+   "failed_checks": [
+    "alert",
+    "no_high_alert"
+   ],
+   "max_state": "HIGH_ALERT",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed15",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed16",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed17",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed18",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "C_baseline_seed19",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed0",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed1",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed2",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed3",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed4",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed5",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed6",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed7",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed8",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed9",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed10",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed11",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed12",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed13",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed14",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed15",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed16",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed17",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed18",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "D_baseline_seed19",
+   "failed_checks": [
+    "alert"
+   ],
+   "max_state": "INVESTIGATE",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed0",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed1",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed2",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed3",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed4",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed5",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed6",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed7",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed8",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed9",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed10",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed11",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed12",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed13",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed14",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed15",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed16",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed17",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed18",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "E_baseline_seed19",
+   "failed_checks": [
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed0",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed1",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed2",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed3",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed4",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed5",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed6",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed7",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed8",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed9",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed10",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed11",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed12",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed13",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed14",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed15",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed16",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed17",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed18",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  },
+  {
+   "run_id": "F_baseline_seed19",
+   "failed_checks": [
+    "goal",
+    "safe_stop",
+    "static_exposure"
+   ],
+   "max_state": "NORMAL",
+   "final_action": "ARRIVED",
+   "final_reason": "goal reached"
+  }
+ ],
+ "split": "calib",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19
+ ],
+ "scenarios": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G"
+ ],
+ "config": {
+  "sim": {
+   "max_steps": 150,
+   "step_seconds": 0.5
+  },
+  "fusion": {
+   "delay_threshold": 2,
+   "stale_threshold": 4,
+   "association_window": 6,
+   "freshness_tau": 3.0,
+   "heartbeat_timeout": 8,
+   "range_min_m": 0.05,
+   "range_max_m": 6.0
+  },
+  "adta": {
+   "initial_trust": {
+    "camera-1": 0.8,
+    "range-1": 0.8,
+    "beam-1": 0.8,
+    "door-ctrl-1": 0.7
+   },
+   "default_initial_trust": 0.7,
+   "alpha": 1.0,
+   "beta": 1.0,
+   "gamma": 1.0,
+   "reward_valid": 0.004,
+   "reward_corroborated": 0.03,
+   "penalties": {
+    "stale": 0.15,
+    "invalid_value": 0.25,
+    "implausible": 0.2,
+    "duplicate": 0.08,
+    "delayed": 0.03,
+    "missing": 0.04
+   },
+   "disagreement_penalty": 0.03,
+   "disagreement_repeat": 3,
+   "outvoted_penalty": 0.05,
+   "max_rise_per_step": 0.03,
+   "probation_steps": 12,
+   "probation_reward_scale": 0.25
+  },
+  "ctre": {
+   "min_obs_weight": 0.25,
+   "conflict_level": 0.3,
+   "uncertain_support": 0.2,
+   "investigate_support": 0.6,
+   "investigate_sources": 2,
+   "high_alert_support": 0.85,
+   "high_alert_sources": 3,
+   "high_alert_requires_cross_domain": true,
+   "rejected_evidence_is_uncertain": true,
+   "rejected_evidence_window": 2,
+   "missing_source_is_uncertain": false,
+   "escalate_persist": 2,
+   "deescalate_persist": 4
+  },
+  "atno": {
+   "lambda_distance": 1.0,
+   "lambda_exposure": 4.0,
+   "max_route_exposure": 6.0,
+   "allow_diagonal": true,
+   "investigate_zone_exposure": 1.0,
+   "alert_memory_steps": 40
+  },
+  "policy": {
+   "uncertain_max_wait": 20,
+   "investigate_max_hold": 40
+  },
+  "baseline": {
+   "alert_confidence": 0.7,
+   "high_alert_sources": 2,
+   "window": 6,
+   "max_hold": 40
+  }
+ }
+}

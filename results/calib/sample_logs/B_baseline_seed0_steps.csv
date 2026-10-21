@@ -1,0 +1,35 @@
+step,x,y,heading,mode,action,state,raw_state,rule,s_pos,s_neg,shadow_state,alert,safety_override,reason,trust_camera-1,trust_range-1,trust_beam-1,trust_door-ctrl-1
+1,3,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.804,0.8,0.8,0.7
+2,4,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.804,0.804,0.8,0.7
+3,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.727,0.0,NORMAL,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.808,0.804,0.804,0.7
+4,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.753,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.812,0.804,0.804,0.704
+5,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.753,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.816,0.804,0.804,0.704
+6,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.793,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.82,0.808,0.804,0.704
+7,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.824,0.808,0.808,0.704
+8,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.828,0.808,0.808,0.708
+9,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.836,0.808,0.808,0.708
+10,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.836,0.812,0.808,0.708
+11,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.84,0.812,0.812,0.708
+12,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.905,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.844,0.812,0.812,0.712
+13,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.894,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.848,0.812,0.812,0.712
+14,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.894,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.848,0.816,0.812,0.712
+15,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.894,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.848,0.816,0.816,0.712
+16,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.894,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.848,0.816,0.816,0.716
+17,4,7,0.0,STOPPED,STOP_ALERT,INVESTIGATE,INVESTIGATE,fixed threshold,0.79,0.0,UNCERTAIN,baseline alert: INVESTIGATE,,fixed-threshold alert: stop and hold,0.852,0.816,0.816,0.716
+18,5,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,UNCERTAIN,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.852,0.82,0.816,0.716
+19,6,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,UNCERTAIN,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.852,0.82,0.82,0.716
+20,7,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,UNCERTAIN,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.852,0.82,0.82,0.72
+21,8,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.856,0.82,0.82,0.72
+22,9,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.856,0.824,0.82,0.72
+23,10,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.856,0.824,0.824,0.72
+24,11,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.856,0.824,0.824,0.724
+25,12,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.86,0.824,0.824,0.724
+26,13,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.86,0.828,0.824,0.724
+27,14,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.86,0.828,0.828,0.724
+28,15,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.86,0.828,0.828,0.728
+29,16,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.864,0.828,0.828,0.728
+30,17,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.864,0.832,0.828,0.728
+31,18,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.864,0.832,0.832,0.728
+32,19,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.864,0.832,0.832,0.732
+33,20,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,"following obstacle-only A* route (d=19.0, exposure=0.0)",0.868,0.832,0.832,0.732
+34,21,7,0.0,ARRIVED,ARRIVED,NORMAL,NORMAL,fixed threshold,0.0,0.0,NORMAL,,,goal reached,0.868,0.836,0.832,0.732

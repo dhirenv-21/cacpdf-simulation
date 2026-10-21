@@ -1,0 +1,4 @@
+# Runtime (tested with Python 3.10.11 on Windows 11)
+pygame>=2.5,<3          # tested: 2.6.1
+# Optional: only used to draw results/<split>/comparison.png
+matplotlib>=3.5         # tested: 3.10.8

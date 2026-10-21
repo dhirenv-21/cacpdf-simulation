@@ -1,0 +1,4329 @@
+{
+ "run_id": "F_baseline_seed0",
+ "software_version": "0.1.0",
+ "scenario": {
+  "key": "F",
+  "name": "No safe route",
+  "description": "Northern gap closed; the only corridor crosses high-exposure zone Z1.",
+  "expected_behavior": "Planner finds no route within the exposure limit; rover stops and reports why.",
+  "expected_checks": {
+   "safe_stop": true,
+   "goal": false,
+   "static_exposure_max": 0.0
+  }
+ },
+ "method": "baseline",
+ "seed": 0,
+ "config": {
+  "sim": {
+   "max_steps": 150,
+   "step_seconds": 0.5
+  },
+  "fusion": {
+   "delay_threshold": 2,
+   "stale_threshold": 4,
+   "association_window": 6,
+   "freshness_tau": 3.0,
+   "heartbeat_timeout": 8,
+   "range_min_m": 0.05,
+   "range_max_m": 6.0
+  },
+  "adta": {
+   "initial_trust": {
+    "camera-1": 0.8,
+    "range-1": 0.8,
+    "beam-1": 0.8,
+    "door-ctrl-1": 0.7
+   },
+   "default_initial_trust": 0.7,
+   "alpha": 1.0,
+   "beta": 1.0,
+   "gamma": 1.0,
+   "reward_valid": 0.004,
+   "reward_corroborated": 0.03,
+   "penalties": {
+    "stale": 0.15,
+    "invalid_value": 0.25,
+    "implausible": 0.2,
+    "duplicate": 0.08,
+    "delayed": 0.03,
+    "missing": 0.04
+   },
+   "disagreement_penalty": 0.03,
+   "disagreement_repeat": 3,
+   "outvoted_penalty": 0.05,
+   "max_rise_per_step": 0.03,
+   "probation_steps": 12,
+   "probation_reward_scale": 0.25
+  },
+  "ctre": {
+   "min_obs_weight": 0.25,
+   "conflict_level": 0.3,
+   "uncertain_support": 0.2,
+   "investigate_support": 0.6,
+   "investigate_sources": 2,
+   "high_alert_support": 0.85,
+   "high_alert_sources": 3,
+   "high_alert_requires_cross_domain": true,
+   "rejected_evidence_is_uncertain": true,
+   "rejected_evidence_window": 2,
+   "missing_source_is_uncertain": false,
+   "escalate_persist": 2,
+   "deescalate_persist": 4
+  },
+  "atno": {
+   "lambda_distance": 1.0,
+   "lambda_exposure": 4.0,
+   "max_route_exposure": 6.0,
+   "allow_diagonal": true,
+   "investigate_zone_exposure": 1.0,
+   "alert_memory_steps": 40
+  },
+  "policy": {
+   "uncertain_max_wait": 20,
+   "investigate_max_hold": 40
+  },
+  "baseline": {
+   "alert_confidence": 0.7,
+   "high_alert_sources": 2,
+   "window": 6,
+   "max_hold": 40
+  }
+ },
+ "map": {
+  "width": 24,
+  "height": 15,
+  "start": [
+   2,
+   7
+  ],
+  "goal": [
+   21,
+   7
+  ],
+  "obstacles": [
+   [
+    5,
+    10
+   ],
+   [
+    5,
+    11
+   ],
+   [
+    6,
+    10
+   ],
+   [
+    6,
+    11
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    11,
+    1
+   ],
+   [
+    11,
+    2
+   ],
+   [
+    11,
+    3
+   ],
+   [
+    11,
+    4
+   ],
+   [
+    11,
+    5
+   ],
+   [
+    11,
+    9
+   ],
+   [
+    11,
+    10
+   ],
+   [
+    11,
+    11
+   ],
+   [
+    11,
+    12
+   ],
+   [
+    11,
+    13
+   ],
+   [
+    11,
+    14
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    12,
+    1
+   ],
+   [
+    12,
+    2
+   ],
+   [
+    12,
+    3
+   ],
+   [
+    12,
+    4
+   ],
+   [
+    12,
+    5
+   ],
+   [
+    12,
+    9
+   ],
+   [
+    12,
+    10
+   ],
+   [
+    12,
+    11
+   ],
+   [
+    12,
+    12
+   ],
+   [
+    12,
+    13
+   ],
+   [
+    12,
+    14
+   ],
+   [
+    18,
+    3
+   ],
+   [
+    18,
+    4
+   ],
+   [
+    19,
+    3
+   ],
+   [
+    19,
+    4
+   ]
+  ],
+  "zones": [
+   {
+    "zone_id": "Z1",
+    "label": "exposure zone Z1",
+    "exposure": 3.0,
+    "prohibited": false,
+    "monitored": true,
+    "cells": [
+     [
+      9,
+      6
+     ],
+     [
+      9,
+      7
+     ],
+     [
+      9,
+      8
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      11,
+      7
+     ],
+     [
+      11,
+      8
+     ],
+     [
+      12,
+      6
+     ],
+     [
+      12,
+      7
+     ],
+     [
+      12,
+      8
+     ],
+     [
+      13,
+      6
+     ],
+     [
+      13,
+      7
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      14,
+      6
+     ],
+     [
+      14,
+      7
+     ],
+     [
+      14,
+      8
+     ]
+    ]
+   }
+  ]
+ },
+ "ground_truth": {
+  "event_present": false,
+  "event_zone": "Z1",
+  "event_window": null,
+  "suppressed": [],
+  "notes": "navigation-only scenario"
+ },
+ "sources": {
+  "camera-1": {
+   "type": "physical",
+   "group": "vision",
+   "label": "Camera (sim)"
+  },
+  "range-1": {
+   "type": "physical",
+   "group": "ranging",
+   "label": "Range sensor (sim)"
+  },
+  "beam-1": {
+   "type": "physical",
+   "group": "beam",
+   "label": "Zone beam (sim)"
+  },
+  "door-ctrl-1": {
+   "type": "cyber",
+   "group": "access",
+   "label": "Door controller telemetry (sim)"
+  }
+ },
+ "events_hash": "b7ba5de27fec47ff",
+ "events": [
+  {
+   "event_id": "e0000",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 1,
+   "arrival_step": 1,
+   "seq": 1,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0040",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 2,
+   "arrival_step": 2,
+   "seq": 1,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0080",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 3,
+   "arrival_step": 3,
+   "seq": 1,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0120",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 4,
+   "arrival_step": 4,
+   "seq": 1,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0001",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 5,
+   "arrival_step": 5,
+   "seq": 2,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0041",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 6,
+   "arrival_step": 6,
+   "seq": 2,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0081",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 7,
+   "arrival_step": 7,
+   "seq": 2,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0121",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 8,
+   "arrival_step": 8,
+   "seq": 2,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0002",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 9,
+   "arrival_step": 9,
+   "seq": 3,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0042",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 10,
+   "arrival_step": 10,
+   "seq": 3,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0082",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 11,
+   "arrival_step": 11,
+   "seq": 3,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0122",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 12,
+   "arrival_step": 12,
+   "seq": 3,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0003",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 13,
+   "arrival_step": 13,
+   "seq": 4,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0043",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 14,
+   "arrival_step": 14,
+   "seq": 4,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0083",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 15,
+   "arrival_step": 15,
+   "seq": 4,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0123",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 16,
+   "arrival_step": 16,
+   "seq": 4,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0004",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 17,
+   "arrival_step": 17,
+   "seq": 5,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0044",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 18,
+   "arrival_step": 18,
+   "seq": 5,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0084",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 19,
+   "arrival_step": 19,
+   "seq": 5,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0124",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 20,
+   "arrival_step": 20,
+   "seq": 5,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0005",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 21,
+   "arrival_step": 21,
+   "seq": 6,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0045",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 22,
+   "arrival_step": 22,
+   "seq": 6,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0085",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 23,
+   "arrival_step": 23,
+   "seq": 6,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0125",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 24,
+   "arrival_step": 24,
+   "seq": 6,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0006",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 25,
+   "arrival_step": 25,
+   "seq": 7,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0046",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 26,
+   "arrival_step": 26,
+   "seq": 7,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0086",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 27,
+   "arrival_step": 27,
+   "seq": 7,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0126",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 28,
+   "arrival_step": 28,
+   "seq": 7,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0007",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 29,
+   "arrival_step": 29,
+   "seq": 8,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0047",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 30,
+   "arrival_step": 30,
+   "seq": 8,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0087",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 31,
+   "arrival_step": 31,
+   "seq": 8,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0127",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 32,
+   "arrival_step": 32,
+   "seq": 8,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0008",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 33,
+   "arrival_step": 33,
+   "seq": 9,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0048",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 34,
+   "arrival_step": 34,
+   "seq": 9,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0088",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 35,
+   "arrival_step": 35,
+   "seq": 9,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0128",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 36,
+   "arrival_step": 36,
+   "seq": 9,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0009",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 37,
+   "arrival_step": 37,
+   "seq": 10,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0049",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 38,
+   "arrival_step": 38,
+   "seq": 10,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0089",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 39,
+   "arrival_step": 39,
+   "seq": 10,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0129",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 40,
+   "arrival_step": 40,
+   "seq": 10,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0010",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 41,
+   "arrival_step": 41,
+   "seq": 11,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0050",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 42,
+   "arrival_step": 42,
+   "seq": 11,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0090",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 43,
+   "arrival_step": 43,
+   "seq": 11,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0130",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 44,
+   "arrival_step": 44,
+   "seq": 11,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0011",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 45,
+   "arrival_step": 45,
+   "seq": 12,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0051",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 46,
+   "arrival_step": 46,
+   "seq": 12,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0091",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 47,
+   "arrival_step": 47,
+   "seq": 12,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0131",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 48,
+   "arrival_step": 48,
+   "seq": 12,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0012",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 49,
+   "arrival_step": 49,
+   "seq": 13,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0052",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 50,
+   "arrival_step": 50,
+   "seq": 13,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0092",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 51,
+   "arrival_step": 51,
+   "seq": 13,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0132",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 52,
+   "arrival_step": 52,
+   "seq": 13,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0013",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 53,
+   "arrival_step": 53,
+   "seq": 14,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0053",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 54,
+   "arrival_step": 54,
+   "seq": 14,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0093",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 55,
+   "arrival_step": 55,
+   "seq": 14,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0133",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 56,
+   "arrival_step": 56,
+   "seq": 14,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0014",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 57,
+   "arrival_step": 57,
+   "seq": 15,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0054",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 58,
+   "arrival_step": 58,
+   "seq": 15,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0094",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 59,
+   "arrival_step": 59,
+   "seq": 15,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0134",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 60,
+   "arrival_step": 60,
+   "seq": 15,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0015",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 61,
+   "arrival_step": 61,
+   "seq": 16,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0055",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 62,
+   "arrival_step": 62,
+   "seq": 16,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0095",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 63,
+   "arrival_step": 63,
+   "seq": 16,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0135",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 64,
+   "arrival_step": 64,
+   "seq": 16,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0016",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 65,
+   "arrival_step": 65,
+   "seq": 17,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0056",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 66,
+   "arrival_step": 66,
+   "seq": 17,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0096",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 67,
+   "arrival_step": 67,
+   "seq": 17,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0136",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 68,
+   "arrival_step": 68,
+   "seq": 17,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0017",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 69,
+   "arrival_step": 69,
+   "seq": 18,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0057",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 70,
+   "arrival_step": 70,
+   "seq": 18,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0097",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 71,
+   "arrival_step": 71,
+   "seq": 18,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0137",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 72,
+   "arrival_step": 72,
+   "seq": 18,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0018",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 73,
+   "arrival_step": 73,
+   "seq": 19,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0058",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 74,
+   "arrival_step": 74,
+   "seq": 19,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0098",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 75,
+   "arrival_step": 75,
+   "seq": 19,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0138",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 76,
+   "arrival_step": 76,
+   "seq": 19,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0019",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 77,
+   "arrival_step": 77,
+   "seq": 20,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0059",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 78,
+   "arrival_step": 78,
+   "seq": 20,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0099",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 79,
+   "arrival_step": 79,
+   "seq": 20,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0139",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 80,
+   "arrival_step": 80,
+   "seq": 20,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0020",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 81,
+   "arrival_step": 81,
+   "seq": 21,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0060",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 82,
+   "arrival_step": 82,
+   "seq": 21,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0100",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 83,
+   "arrival_step": 83,
+   "seq": 21,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0140",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 84,
+   "arrival_step": 84,
+   "seq": 21,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0021",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 85,
+   "arrival_step": 85,
+   "seq": 22,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0061",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 86,
+   "arrival_step": 86,
+   "seq": 22,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0101",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 87,
+   "arrival_step": 87,
+   "seq": 22,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0141",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 88,
+   "arrival_step": 88,
+   "seq": 22,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0022",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 89,
+   "arrival_step": 89,
+   "seq": 23,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0062",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 90,
+   "arrival_step": 90,
+   "seq": 23,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0102",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 91,
+   "arrival_step": 91,
+   "seq": 23,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0142",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 92,
+   "arrival_step": 92,
+   "seq": 23,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0023",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 93,
+   "arrival_step": 93,
+   "seq": 24,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0063",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 94,
+   "arrival_step": 94,
+   "seq": 24,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0103",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 95,
+   "arrival_step": 95,
+   "seq": 24,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0143",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 96,
+   "arrival_step": 96,
+   "seq": 24,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0024",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 97,
+   "arrival_step": 97,
+   "seq": 25,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0064",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 98,
+   "arrival_step": 98,
+   "seq": 25,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0104",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 99,
+   "arrival_step": 99,
+   "seq": 25,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0144",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 100,
+   "arrival_step": 100,
+   "seq": 25,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0025",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 101,
+   "arrival_step": 101,
+   "seq": 26,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0065",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 102,
+   "arrival_step": 102,
+   "seq": 26,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0105",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 103,
+   "arrival_step": 103,
+   "seq": 26,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0145",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 104,
+   "arrival_step": 104,
+   "seq": 26,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0026",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 105,
+   "arrival_step": 105,
+   "seq": 27,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0066",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 106,
+   "arrival_step": 106,
+   "seq": 27,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0106",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 107,
+   "arrival_step": 107,
+   "seq": 27,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0146",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 108,
+   "arrival_step": 108,
+   "seq": 27,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0027",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 109,
+   "arrival_step": 109,
+   "seq": 28,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0067",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 110,
+   "arrival_step": 110,
+   "seq": 28,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0107",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 111,
+   "arrival_step": 111,
+   "seq": 28,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0147",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 112,
+   "arrival_step": 112,
+   "seq": 28,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0028",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 113,
+   "arrival_step": 113,
+   "seq": 29,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0068",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 114,
+   "arrival_step": 114,
+   "seq": 29,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0108",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 115,
+   "arrival_step": 115,
+   "seq": 29,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0148",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 116,
+   "arrival_step": 116,
+   "seq": 29,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0029",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 117,
+   "arrival_step": 117,
+   "seq": 30,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0069",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 118,
+   "arrival_step": 118,
+   "seq": 30,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0109",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 119,
+   "arrival_step": 119,
+   "seq": 30,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0149",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 120,
+   "arrival_step": 120,
+   "seq": 30,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0030",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 121,
+   "arrival_step": 121,
+   "seq": 31,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0070",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 122,
+   "arrival_step": 122,
+   "seq": 31,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0110",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 123,
+   "arrival_step": 123,
+   "seq": 31,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0150",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 124,
+   "arrival_step": 124,
+   "seq": 31,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0031",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 125,
+   "arrival_step": 125,
+   "seq": 32,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0071",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 126,
+   "arrival_step": 126,
+   "seq": 32,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0111",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 127,
+   "arrival_step": 127,
+   "seq": 32,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0151",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 128,
+   "arrival_step": 128,
+   "seq": 32,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0032",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 129,
+   "arrival_step": 129,
+   "seq": 33,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0072",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 130,
+   "arrival_step": 130,
+   "seq": 33,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0112",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 131,
+   "arrival_step": 131,
+   "seq": 33,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0152",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 132,
+   "arrival_step": 132,
+   "seq": 33,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0033",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 133,
+   "arrival_step": 133,
+   "seq": 34,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0073",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 134,
+   "arrival_step": 134,
+   "seq": 34,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0113",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 135,
+   "arrival_step": 135,
+   "seq": 34,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0153",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 136,
+   "arrival_step": 136,
+   "seq": 34,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0034",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 137,
+   "arrival_step": 137,
+   "seq": 35,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0074",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 138,
+   "arrival_step": 138,
+   "seq": 35,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0114",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 139,
+   "arrival_step": 139,
+   "seq": 35,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0154",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 140,
+   "arrival_step": 140,
+   "seq": 35,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0035",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 141,
+   "arrival_step": 141,
+   "seq": 36,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0075",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 142,
+   "arrival_step": 142,
+   "seq": 36,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0115",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 143,
+   "arrival_step": 143,
+   "seq": 36,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0155",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 144,
+   "arrival_step": 144,
+   "seq": 36,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0036",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 145,
+   "arrival_step": 145,
+   "seq": 37,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0076",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 146,
+   "arrival_step": 146,
+   "seq": 37,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0116",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 147,
+   "arrival_step": 147,
+   "seq": 37,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0156",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 148,
+   "arrival_step": 148,
+   "seq": 37,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0037",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 149,
+   "arrival_step": 149,
+   "seq": 38,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0077",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 150,
+   "arrival_step": 150,
+   "seq": 38,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0117",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 151,
+   "arrival_step": 151,
+   "seq": 38,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0157",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 152,
+   "arrival_step": 152,
+   "seq": 38,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0038",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 153,
+   "arrival_step": 153,
+   "seq": 39,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0078",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 154,
+   "arrival_step": 154,
+   "seq": 39,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0118",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 155,
+   "arrival_step": 155,
+   "seq": 39,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0158",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "step": 156,
+   "arrival_step": 156,
+   "seq": 39,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "cyber"
+  },
+  {
+   "event_id": "e0039",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "step": 157,
+   "arrival_step": 157,
+   "seq": 40,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0079",
+   "source_id": "range-1",
+   "event_type": "status",
+   "step": 158,
+   "arrival_step": 158,
+   "seq": 40,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  },
+  {
+   "event_id": "e0119",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "step": 159,
+   "arrival_step": 159,
+   "seq": 40,
+   "confidence": 1.0,
+   "zone_id": null,
+   "value": {
+    "ok": true
+   },
+   "injected_fault": null,
+   "source_type": "physical"
+  }
+ ],
+ "observations": [
+  {
+   "event_id": "e0000",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 1,
+   "received_step": 1,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.804
+  },
+  {
+   "event_id": "e0040",
+   "source_id": "range-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 2,
+   "received_step": 2,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.804
+  },
+  {
+   "event_id": "e0080",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 3,
+   "received_step": 3,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.804
+  },
+  {
+   "event_id": "e0120",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 4,
+   "received_step": 4,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.704
+  },
+  {
+   "event_id": "e0001",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 5,
+   "received_step": 5,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.808
+  },
+  {
+   "event_id": "e0041",
+   "source_id": "range-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 6,
+   "received_step": 6,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.808
+  },
+  {
+   "event_id": "e0081",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 7,
+   "received_step": 7,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.808
+  },
+  {
+   "event_id": "e0121",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 8,
+   "received_step": 8,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.708
+  },
+  {
+   "event_id": "e0002",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 9,
+   "received_step": 9,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.812
+  },
+  {
+   "event_id": "e0042",
+   "source_id": "range-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 10,
+   "received_step": 10,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.812
+  },
+  {
+   "event_id": "e0082",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 11,
+   "received_step": 11,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.812
+  },
+  {
+   "event_id": "e0122",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 12,
+   "received_step": 12,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.712
+  },
+  {
+   "event_id": "e0003",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 13,
+   "received_step": 13,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.816
+  },
+  {
+   "event_id": "e0043",
+   "source_id": "range-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 14,
+   "received_step": 14,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.816
+  },
+  {
+   "event_id": "e0083",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 15,
+   "received_step": 15,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.816
+  },
+  {
+   "event_id": "e0123",
+   "source_id": "door-ctrl-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 16,
+   "received_step": 16,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.716
+  },
+  {
+   "event_id": "e0004",
+   "source_id": "camera-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 17,
+   "received_step": 17,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.82
+  },
+  {
+   "event_id": "e0044",
+   "source_id": "range-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 18,
+   "received_step": 18,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.82
+  },
+  {
+   "event_id": "e0084",
+   "source_id": "beam-1",
+   "event_type": "status",
+   "zone_id": null,
+   "step": 19,
+   "received_step": 19,
+   "age_at_arrival": 0,
+   "confidence": 1.0,
+   "flags": [],
+   "accepted": true,
+   "agree": [],
+   "disagree": [],
+   "injected_fault": null,
+   "trust_after": 0.82
+  }
+ ],
+ "trust_updates": [
+  {
+   "step": 1,
+   "source_id": "camera-1",
+   "before": 0.8,
+   "after": 0.804,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0000",
+   "injected_fault": null
+  },
+  {
+   "step": 2,
+   "source_id": "range-1",
+   "before": 0.8,
+   "after": 0.804,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0040",
+   "injected_fault": null
+  },
+  {
+   "step": 3,
+   "source_id": "beam-1",
+   "before": 0.8,
+   "after": 0.804,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0080",
+   "injected_fault": null
+  },
+  {
+   "step": 4,
+   "source_id": "door-ctrl-1",
+   "before": 0.7,
+   "after": 0.704,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0120",
+   "injected_fault": null
+  },
+  {
+   "step": 5,
+   "source_id": "camera-1",
+   "before": 0.804,
+   "after": 0.808,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0001",
+   "injected_fault": null
+  },
+  {
+   "step": 6,
+   "source_id": "range-1",
+   "before": 0.804,
+   "after": 0.808,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0041",
+   "injected_fault": null
+  },
+  {
+   "step": 7,
+   "source_id": "beam-1",
+   "before": 0.804,
+   "after": 0.808,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0081",
+   "injected_fault": null
+  },
+  {
+   "step": 8,
+   "source_id": "door-ctrl-1",
+   "before": 0.704,
+   "after": 0.708,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0121",
+   "injected_fault": null
+  },
+  {
+   "step": 9,
+   "source_id": "camera-1",
+   "before": 0.808,
+   "after": 0.812,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0002",
+   "injected_fault": null
+  },
+  {
+   "step": 10,
+   "source_id": "range-1",
+   "before": 0.808,
+   "after": 0.812,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0042",
+   "injected_fault": null
+  },
+  {
+   "step": 11,
+   "source_id": "beam-1",
+   "before": 0.808,
+   "after": 0.812,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0082",
+   "injected_fault": null
+  },
+  {
+   "step": 12,
+   "source_id": "door-ctrl-1",
+   "before": 0.708,
+   "after": 0.712,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0122",
+   "injected_fault": null
+  },
+  {
+   "step": 13,
+   "source_id": "camera-1",
+   "before": 0.812,
+   "after": 0.816,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0003",
+   "injected_fault": null
+  },
+  {
+   "step": 14,
+   "source_id": "range-1",
+   "before": 0.812,
+   "after": 0.816,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0043",
+   "injected_fault": null
+  },
+  {
+   "step": 15,
+   "source_id": "beam-1",
+   "before": 0.812,
+   "after": 0.816,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0083",
+   "injected_fault": null
+  },
+  {
+   "step": 16,
+   "source_id": "door-ctrl-1",
+   "before": 0.712,
+   "after": 0.716,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0123",
+   "injected_fault": null
+  },
+  {
+   "step": 17,
+   "source_id": "camera-1",
+   "before": 0.816,
+   "after": 0.82,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0004",
+   "injected_fault": null
+  },
+  {
+   "step": 18,
+   "source_id": "range-1",
+   "before": 0.816,
+   "after": 0.82,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0044",
+   "injected_fault": null
+  },
+  {
+   "step": 19,
+   "source_id": "beam-1",
+   "before": 0.816,
+   "after": 0.82,
+   "delta": 0.004,
+   "reasons": [
+    "valid"
+   ],
+   "event_id": "e0084",
+   "injected_fault": null
+  }
+ ],
+ "steps": [
+  {
+   "step": 1,
+   "pos": [
+    3,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.804,
+    "range-1": 0.8,
+    "beam-1": 0.8,
+    "door-ctrl-1": 0.7
+   },
+   "route_remaining": {
+    "distance": 18.0,
+    "exposure": 18.0,
+    "waypoints": 18
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 2,
+   "pos": [
+    4,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.804,
+    "range-1": 0.804,
+    "beam-1": 0.8,
+    "door-ctrl-1": 0.7
+   },
+   "route_remaining": {
+    "distance": 17.0,
+    "exposure": 18.0,
+    "waypoints": 17
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 3,
+   "pos": [
+    5,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.804,
+    "range-1": 0.804,
+    "beam-1": 0.804,
+    "door-ctrl-1": 0.7
+   },
+   "route_remaining": {
+    "distance": 16.0,
+    "exposure": 18.0,
+    "waypoints": 16
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 4,
+   "pos": [
+    6,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.804,
+    "range-1": 0.804,
+    "beam-1": 0.804,
+    "door-ctrl-1": 0.704
+   },
+   "route_remaining": {
+    "distance": 15.0,
+    "exposure": 18.0,
+    "waypoints": 15
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 5,
+   "pos": [
+    7,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.808,
+    "range-1": 0.804,
+    "beam-1": 0.804,
+    "door-ctrl-1": 0.704
+   },
+   "route_remaining": {
+    "distance": 14.0,
+    "exposure": 18.0,
+    "waypoints": 14
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 6,
+   "pos": [
+    8,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.808,
+    "range-1": 0.808,
+    "beam-1": 0.804,
+    "door-ctrl-1": 0.704
+   },
+   "route_remaining": {
+    "distance": 13.0,
+    "exposure": 18.0,
+    "waypoints": 13
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 7,
+   "pos": [
+    9,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.808,
+    "range-1": 0.808,
+    "beam-1": 0.808,
+    "door-ctrl-1": 0.704
+   },
+   "route_remaining": {
+    "distance": 12.0,
+    "exposure": 15.0,
+    "waypoints": 12
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 8,
+   "pos": [
+    10,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.808,
+    "range-1": 0.808,
+    "beam-1": 0.808,
+    "door-ctrl-1": 0.708
+   },
+   "route_remaining": {
+    "distance": 11.0,
+    "exposure": 12.0,
+    "waypoints": 11
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 9,
+   "pos": [
+    11,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.812,
+    "range-1": 0.808,
+    "beam-1": 0.808,
+    "door-ctrl-1": 0.708
+   },
+   "route_remaining": {
+    "distance": 10.0,
+    "exposure": 9.0,
+    "waypoints": 10
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 10,
+   "pos": [
+    12,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.812,
+    "range-1": 0.812,
+    "beam-1": 0.808,
+    "door-ctrl-1": 0.708
+   },
+   "route_remaining": {
+    "distance": 9.0,
+    "exposure": 6.0,
+    "waypoints": 9
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 11,
+   "pos": [
+    13,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.812,
+    "range-1": 0.812,
+    "beam-1": 0.812,
+    "door-ctrl-1": 0.708
+   },
+   "route_remaining": {
+    "distance": 8.0,
+    "exposure": 3.0,
+    "waypoints": 8
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 12,
+   "pos": [
+    14,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.812,
+    "range-1": 0.812,
+    "beam-1": 0.812,
+    "door-ctrl-1": 0.712
+   },
+   "route_remaining": {
+    "distance": 7.0,
+    "exposure": 0.0,
+    "waypoints": 7
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 13,
+   "pos": [
+    15,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.816,
+    "range-1": 0.812,
+    "beam-1": 0.812,
+    "door-ctrl-1": 0.712
+   },
+   "route_remaining": {
+    "distance": 6.0,
+    "exposure": 0.0,
+    "waypoints": 6
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 14,
+   "pos": [
+    16,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.816,
+    "range-1": 0.816,
+    "beam-1": 0.812,
+    "door-ctrl-1": 0.712
+   },
+   "route_remaining": {
+    "distance": 5.0,
+    "exposure": 0.0,
+    "waypoints": 5
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 15,
+   "pos": [
+    17,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.816,
+    "range-1": 0.816,
+    "beam-1": 0.816,
+    "door-ctrl-1": 0.712
+   },
+   "route_remaining": {
+    "distance": 4.0,
+    "exposure": 0.0,
+    "waypoints": 4
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 16,
+   "pos": [
+    18,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.816,
+    "range-1": 0.816,
+    "beam-1": 0.816,
+    "door-ctrl-1": 0.716
+   },
+   "route_remaining": {
+    "distance": 3.0,
+    "exposure": 0.0,
+    "waypoints": 3
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 17,
+   "pos": [
+    19,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.82,
+    "range-1": 0.816,
+    "beam-1": 0.816,
+    "door-ctrl-1": 0.716
+   },
+   "route_remaining": {
+    "distance": 2.0,
+    "exposure": 0.0,
+    "waypoints": 2
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 18,
+   "pos": [
+    20,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "MOVING",
+   "action": "CONTINUE",
+   "reason": "following obstacle-only A* route (d=19.0, exposure=18.0)",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.82,
+    "range-1": 0.82,
+    "beam-1": 0.816,
+    "door-ctrl-1": 0.716
+   },
+   "route_remaining": {
+    "distance": 1.0,
+    "exposure": 0.0,
+    "waypoints": 1
+   },
+   "dynamic_zones": {}
+  },
+  {
+   "step": 19,
+   "pos": [
+    21,
+    7
+   ],
+   "heading": 0.0,
+   "mode": "ARRIVED",
+   "action": "ARRIVED",
+   "reason": "goal reached",
+   "alert": null,
+   "safety_override": null,
+   "state": "NORMAL",
+   "raw_state": "NORMAL",
+   "rule": "fixed threshold",
+   "zone_id": null,
+   "s_pos": 0.0,
+   "s_neg": 0.0,
+   "confidence": 0.0,
+   "transition": null,
+   "explanation": [
+    "Baseline: 0 source(s) with confidence >= 0.7 in last 6 steps"
+   ],
+   "shadow_method": "proposed",
+   "shadow_state": "NORMAL",
+   "trust": {
+    "camera-1": 0.82,
+    "range-1": 0.82,
+    "beam-1": 0.82,
+    "door-ctrl-1": 0.716
+   },
+   "route_remaining": {
+    "distance": 0.0,
+    "exposure": 0.0,
+    "waypoints": 0
+   },
+   "dynamic_zones": {}
+  }
+ ],
+ "alerts": [],
+ "routes": [
+  {
+   "step": 1,
+   "why": "initial plan",
+   "changed": false,
+   "ok": true,
+   "distance": 19.0,
+   "exposure": 18.0,
+   "cost": 19.0,
+   "reason": "optimal under J = distance (exposure ignored)",
+   "planner": "obstacle-only A*",
+   "path": [
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     11,
+     7
+    ],
+    [
+     12,
+     7
+    ],
+    [
+     13,
+     7
+    ],
+    [
+     14,
+     7
+    ],
+    [
+     15,
+     7
+    ],
+    [
+     16,
+     7
+    ],
+    [
+     17,
+     7
+    ],
+    [
+     18,
+     7
+    ],
+    [
+     19,
+     7
+    ],
+    [
+     20,
+     7
+    ],
+    [
+     21,
+     7
+    ]
+   ],
+   "rejected_path": null
+  }
+ ],
+ "reference_plans": {
+  "obstacle_only": {
+   "ok": true,
+   "distance": 19.0,
+   "exposure": 18.0,
+   "cost": 19.0,
+   "reason": "optimal under J = distance (exposure ignored)",
+   "planner": "obstacle-only A*",
+   "path": [
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     11,
+     7
+    ],
+    [
+     12,
+     7
+    ],
+    [
+     13,
+     7
+    ],
+    [
+     14,
+     7
+    ],
+    [
+     15,
+     7
+    ],
+    [
+     16,
+     7
+    ],
+    [
+     17,
+     7
+    ],
+    [
+     18,
+     7
+    ],
+    [
+     19,
+     7
+    ],
+    [
+     20,
+     7
+    ],
+    [
+     21,
+     7
+    ]
+   ],
+   "rejected_path": null
+  },
+  "threat_aware": {
+   "ok": false,
+   "distance": 22.071,
+   "exposure": 12.0,
+   "cost": 70.071,
+   "reason": "no safe route: minimum exposure 12.0 exceeds limit 6.0",
+   "planner": "threat-aware A*",
+   "path": null,
+   "rejected_path": [
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     9,
+     9
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     8
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     14,
+     9
+    ],
+    [
+     15,
+     9
+    ],
+    [
+     16,
+     9
+    ],
+    [
+     17,
+     9
+    ],
+    [
+     18,
+     9
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     20,
+     8
+    ],
+    [
+     21,
+     7
+    ]
+   ]
+  }
+ },
+ "outcome": {
+  "run_id": "F_baseline_seed0",
+  "scenario": "F",
+  "method": "baseline",
+  "seed": 0,
+  "events_hash": "b7ba5de27fec47ff",
+  "manual_injections": 0,
+  "event_present": false,
+  "alert_raised": false,
+  "first_alert_step": null,
+  "detection_latency": null,
+  "max_state": "NORMAL",
+  "states_visited": [
+   "NORMAL"
+  ],
+  "uncertain_steps": 0,
+  "goal_reached": true,
+  "safe_stop": false,
+  "final_action": "ARRIVED",
+  "final_reason": "goal reached",
+  "steps": 19,
+  "distance_travelled": 19.0,
+  "static_exposure_incurred": 18.0,
+  "event_zone_steps_during_event": 0,
+  "zone_entries_after_alert": 0,
+  "reroutes": 0,
+  "safety_overrides": 0,
+  "collisions": 0,
+  "planned_shortest": {
+   "distance": 19.0,
+   "exposure": 18.0,
+   "ok": true
+  },
+  "planned_threat_aware": {
+   "distance": 22.071,
+   "exposure": 12.0,
+   "ok": false,
+   "reason": "no safe route: minimum exposure 12.0 exceeds limit 6.0"
+  },
+  "error": null,
+  "checks": {
+   "goal": false,
+   "safe_stop": false,
+   "static_exposure": false,
+   "no_collision": true
+  },
+  "expected_behavior_met": false
+ },
+ "saved_at_utc": "2026-10-21T20:58:35+00:00"
+}

@@ -1,0 +1,34 @@
+step,x,y,heading,mode,action,state,raw_state,rule,s_pos,s_neg,shadow_state,alert,safety_override,reason,trust_camera-1,trust_range-1,trust_beam-1,trust_door-ctrl-1
+1,3,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.804,0.8,0.8,0.7
+2,4,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.804,0.804,0.8,0.7
+3,5,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.804,0.804,0.804,0.7
+4,6,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.804,0.804,0.804,0.704
+5,7,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.808,0.804,0.804,0.704
+6,8,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.808,0.808,0.804,0.704
+7,9,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.808,0.808,0.804,0.704
+8,10,7,0.0,MOVING,CONTINUE,NORMAL,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.658,0.808,0.804,0.708
+9,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (1/20)",0.659,0.808,0.804,0.708
+10,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (2/20)",0.429,0.812,0.778,0.708
+11,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (3/20)",0.429,0.812,0.779,0.708
+12,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (4/20)",0.429,0.812,0.779,0.462
+13,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (5/20)",0.43,0.812,0.779,0.462
+14,10,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (6/20)",0.43,0.816,0.779,0.462
+15,10,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.0,0.0,INVESTIGATE,,,"R5 no supported event: waiting, requesting another observation (7/20)",0.43,0.816,0.78,0.462
+16,10,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.1919,0.0,NORMAL,,,"R5 no supported event: waiting, requesting another observation (8/20)",0.43,0.82,0.78,0.463
+17,10,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.1919,0.0,NORMAL,,,"R5 no supported event: waiting, requesting another observation (9/20)",0.431,0.82,0.78,0.463
+18,11,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.1928,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.431,0.824,0.78,0.463
+19,12,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.1382,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.431,0.824,0.78,0.463
+20,13,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.099,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.431,0.824,0.78,0.464
+21,14,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0709,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.432,0.824,0.78,0.464
+22,15,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0511,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.432,0.828,0.78,0.464
+23,16,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.432,0.828,0.78,0.464
+24,17,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.432,0.828,0.74,0.465
+25,18,7,0.0,MOVING,CONTINUE,NORMAL,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.236,0.828,0.74,0.465
+26,18,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (1/20)",0.236,0.832,0.74,0.465
+27,18,7,0.0,WAITING,WAIT,UNCERTAIN,UNCERTAIN,R4 weak or unreliable evidence,0.0,0.0,INVESTIGATE,,,"R4 weak or unreliable evidence: waiting, requesting another observation (2/20)",0.236,0.832,0.74,0.465
+28,18,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.0,0.0,INVESTIGATE,,,"R5 no supported event: waiting, requesting another observation (3/20)",0.236,0.832,0.74,0.469
+29,18,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.0,0.0,INVESTIGATE,,,"R5 no supported event: waiting, requesting another observation (4/20)",0.237,0.832,0.74,0.469
+30,18,7,0.0,WAITING,WAIT,UNCERTAIN,NORMAL,R5 no supported event,0.0,0.0,INVESTIGATE,,,"R5 no supported event: waiting, requesting another observation (5/20)",0.237,0.836,0.74,0.469
+31,19,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.237,0.836,0.74,0.469
+32,20,7,0.0,MOVING,CONTINUE,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,"following threat-aware A* route (d=19.0, exposure=0.0)",0.237,0.836,0.74,0.473
+33,21,7,0.0,ARRIVED,ARRIVED,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,goal reached,0.238,0.836,0.74,0.473

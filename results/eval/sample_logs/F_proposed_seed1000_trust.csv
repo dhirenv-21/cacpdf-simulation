@@ -1,0 +1,2 @@
+step,source_id,before,after,delta,reasons,event_id,injected_fault
+1,camera-1,0.8,0.804,0.004,valid,e0000,

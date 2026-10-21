@@ -1,0 +1,2 @@
+step,x,y,heading,mode,action,state,raw_state,rule,s_pos,s_neg,shadow_state,alert,safety_override,reason,trust_camera-1,trust_range-1,trust_beam-1,trust_door-ctrl-1
+1,2,7,0.0,SAFE_STOP,SAFE_STOP,NORMAL,NORMAL,R5 no supported event,0.0,0.0,NORMAL,,,no safe route: minimum exposure 12.0 exceeds limit 6.0,0.804,0.8,0.8,0.7

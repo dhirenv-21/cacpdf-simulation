@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+# per-run logs written while using the GUI or `run`; regenerate any time
+results/gui_runs/
+results/runs/
+results/*/runs/
