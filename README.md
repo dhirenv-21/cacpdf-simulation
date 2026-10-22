@@ -52,34 +52,54 @@ pip install -r requirements.txt
 | Override thresholds | `python -m cacpdf --config my.json run --scenario D` (partial JSON, e.g. `{"ctre": {"escalate_persist": 3}}`) |
 | Tests | `python -m unittest discover -s tests -v` |
 
-### GUI controls
+### GUI layout (presentation dashboard)
 
-| Control | Button | Key |
-|---|---|---|
-| Start/pause | Start / Pause | `SPACE` |
-| Single step | Step | `N` |
-| Reset (same seed, so the run replays exactly) | Reset | `R` |
-| Scenario selector | A–G | `1`–`7` |
-| Proposed ↔ baseline method (resets the run) | Method | `M` |
-| Seed | `-` / `+` | `[` / `]` |
-| Speed | `-` / `+` | `-` / `+` |
-| Inject a fault into the live run | Inject stale / dup / invalid / conflict | `F1`–`F4` |
-| Show status heartbeats in the event feed | HB | `H` |
-| Save log now | Save log | `L` |
-| Quit | | `ESC` |
+The window is a dark control-room dashboard drawn on a fixed 1920×1080 canvas. It is scaled to
+fit the window, so the layout is the same on a laptop and on a projector. Press `F11` for
+fullscreen. Every value on screen is read from the running simulation.
+
+![Dashboard, scenario C: stale and duplicate records rejected, CTRE waits in UNCERTAIN](docs/screenshot_C.png)
+
+| Area | What it shows |
+|---|---|
+| **Top bar** | Current scenario, seed, method, step counter and run status (READY / RUNNING / PAUSED / DONE). A banner on the map confirms every scenario load, reset, method change and seed change. |
+| **Left: Scenario** | Scenarios A–G as a list. The selected one is highlighted. |
+| **Left: Run controls** | Start/Pause, Step, Reset, a Proposed/Baseline method switch, seed − / + and speed − / +. Each control shows its keyboard key. |
+| **Left: What to watch** | A short note on what the audience should notice in this scenario, plus its pre-written expected behaviour. This is guidance text, not data. |
+| **Left: Inject a fault** | Stale record, duplicate, invalid value or conflict, injected into the live run. The run is then marked as manually injected. |
+| **Centre: Map** | Grid with axis labels and a hard-boundary frame, plus obstacles, start `S`, `GOAL`, zone Z1 and its status tag. |
+| **Map: Rover** | Rover with heading arrow, next-waypoint ring, mode, position and heading. |
+| **Map: Routes** | Blue line: planned route. Dashed grey line: the obstacle-only shortest path, for reference. Dashed red line: a rejected unsafe route. Dots: cells travelled. |
+| **Map: Reports and overlays** | Markers for recent reports (green = accepted, red outline = rejected). The legend sits under the map. Overlays show ready, GOAL REACHED and SAFE STOP with the reason. |
+| **Centre: Event feed** | Each simulated record with arrival step, source step, source, type, zone, confidence, age and the source's trust after the update. Rejected rows are tinted red with STALE / DUPLICATE / INVALID / IMPLAUSIBLE badges; delayed and missing records get amber badges. |
+| **Right: Run status** | Outcome, plus route distance and route exposure cost as separate values (remaining, or planned before the first step). Also distance travelled and zone exposure incurred. |
+| **Right: ADTA** | One 0–1 trust bar per source. The tick marks starting trust. The last update reason turns amber when it is not a plain "valid". |
+| **Right: CTRE** | State ladder, a plain-language meaning, the rule that fired, and support vs against scores. The evidence list marks supporting (+), conflicting (−), rejected (×) and silent (?) sources. It also shows what the other method decides on the same inputs. |
+| **Right: Selected safe response** | The action after the safety check, its reason, any alert or safety override, and at the end whether the outcome matched the scenario's expected behaviour. |
+
+**Baseline mode:**
+- The CTRE panel becomes "Baseline · fixed confidence threshold", and UNCERTAIN is marked n/a.
+- The ADTA panel and the event-feed flags are labelled as not used by the baseline. They are still computed so the two methods can be compared.
+
+### Keyboard
+
+| Key | Action |
+|---|---|
+| `SPACE` | Start / pause |
+| `N` | Single step |
+| `R` | Reset (same seed, so the run replays exactly) |
+| `1`–`7` | Scenario A–G |
+| `M` | Toggle proposed / baseline (resets the run) |
+| `[` / `]` | Seed − / + |
+| `-` / `+` | Speed |
+| `F1`–`F4` | Inject stale / duplicate / invalid / conflict |
+| `H` | Show or hide status heartbeats in the event feed |
+| `L` | Save the log now |
+| `F11` | Toggle fullscreen |
+| `ESC` | Leave fullscreen, or quit |
 
 Logs are saved automatically to `results/gui_runs/` when a run ends. A run that had faults
 injected by hand records `manual_injections > 0` and is no longer a pure seeded replay.
-
-The screen shows the following:
-
-* **Map:** the boundary, obstacles, start `S` and goal `G`, and zone Z1. Zone Z1 is shown in one of four styles: monitored, exposure, +alert cost or no-go.
-* **Routes:** the dashed grey line is the obstacle-only shortest path. The blue line is the current route. A red dashed line is the best route, rejected as unsafe.
-* **Rover:** shown with its heading, mode and next waypoint, plus recent report markers.
-* **Event feed:** source, source step, arrival step, confidence, age and the accepted/rejected flags.
-* **ADTA panel:** trust bars (the tick marks initial trust), the last update reason and a trust history.
-* **CTRE panel:** the state ladder, the rule that fired, S_pos/S_neg/confidence, the evidence list, and what the other method would decide on the same inputs.
-* **ATNO/response panel:** the action, the reason, any alert or safety override, route distance and exposure cost, shortest versus threat-aware routes from the start, any dynamic zone costs, and the scenario's expected behaviour compared with the outcome.
 
 ## Scenarios
 
@@ -179,4 +199,5 @@ CACPDF_Implementation_Plan.md             longer-term research plan (input docum
 * **Weak baseline by design:** the comparison baseline is a deliberately simple fixed-threshold detector. Stronger baselines might close much of the gap.
 * **No real "request another observation":** this action only waits. No new sensing is triggered.
 * **Manual fault injection** in the GUI is a demonstration aid, and those runs are not seeded replays.
+* **Dashboard display:** it is designed for a 16:9 screen. On other aspect ratios it is letterboxed, and below about 1280×720 the small text becomes hard to read. Saving a log and showing heartbeats are keyboard-only (`L`, `H`).
 * **Single zone:** the dynamic zone cost and the no-go memory use a fixed 40-step window, and only one monitored zone exists.
