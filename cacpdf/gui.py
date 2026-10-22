@@ -86,6 +86,45 @@ FLAG_LABEL = {"stale": "STALE", "duplicate": "DUPLICATE", "invalid_value": "INVA
               "implausible": "IMPLAUSIBLE", "delayed": "DELAYED", "missing": "MISSING"}
 
 
+_QUIET_CODES = ("probation(reward scaled)", "rise_capped", "clamped")
+
+
+def readable_reason(raw: str) -> Tuple[str, bool]:
+    """Shorten ADTA reason codes for display; returns (text, is_warning).
+
+    Only wording changes: bookkeeping codes (probation, rise cap, clamp) are left
+    to the run log, and the remaining codes are spelled out.
+    """
+    out, warn = [], False
+    for part in [x.strip() for x in raw.split(", ") if x.strip()]:
+        if part in _QUIET_CODES:
+            continue
+        code, _, arg = part.partition(":")
+        who = arg.split("(")[0]
+        if code == "corroborated":
+            out.append(f"corroborated by {who}")
+        elif code == "disagreement_observed":
+            out.append(f"disagrees with {who} (no penalty)")
+            warn = True
+        elif code == "repeated_disagreement":
+            out.append(f"repeated disagreement with {who} (both penalised)")
+            warn = True
+        elif code == "outvoted_by":
+            out.append(f"contradicted by {who}")
+            warn = True
+        elif part.startswith("missing"):
+            out.append("missing heartbeat")
+            warn = True
+        elif part in ("valid", "initial", "resumed after silence", "no change"):
+            out.append(part)
+        else:   # stale, duplicate, invalid_value, implausible, delayed, SILENT prefix
+            out.append(part.replace("_", " "))
+            warn = True
+    if len(out) > 1 and "valid" in out:
+        out.remove("valid")
+    return (", ".join(out) or raw), warn
+
+
 def _font(names: str, size: int, bold: bool = False):
     win = os.path.join(os.environ.get("WINDIR", "C:/Windows"), "Fonts")
     files = {("segoe", False): "segoeui.ttf", ("segoe", True): "segoeuib.ttf",
@@ -117,13 +156,13 @@ class App:
         self.screen = self.canvas          # kept for callers that read the rendered frame
         self.clock = pygame.time.Clock()
         self.F = {
-            "xs": _font("segoe", 14), "s": _font("segoe", 16), "m": _font("segoe", 18),
-            "l": _font("segoe", 22), "sb": _font("semibold", 16), "sbm": _font("semibold", 18),
-            "b": _font("segoe", 18, True), "bl": _font("segoe", 24, True),
+            "xs": _font("segoe", 16), "s": _font("segoe", 17), "m": _font("segoe", 19),
+            "l": _font("segoe", 22), "sb": _font("semibold", 17), "sbm": _font("semibold", 19),
+            "b": _font("segoe", 19, True), "bl": _font("segoe", 24, True),
             "bxl": _font("segoe", 30, True), "title": _font("segoe", 26, True),
-            "cap": _font("semibold", 13), "mono": _font("mono", 15),
-            "monos": _font("mono", 14), "monob": _font("mono", 16, True),
-            "axis": _font("mono", 12),
+            "cap": _font("semibold", 15), "mono": _font("mono", 17),
+            "monos": _font("mono", 17), "monob": _font("mono", 18, True),
+            "axis": _font("mono", 14),
         }
         self._tcache: Dict[tuple, pygame.Surface] = {}
         self.config = config
@@ -382,8 +421,8 @@ class App:
         self.text("CACPDF", (20, 12), "title", C["text"])
         self.text("Cognitive Autonomous Cyber-Physical Defense Framework", (20, 42), "xs",
                   C["dim"])
-        self.pill("SIMULATION ONLY · not a deployed security system", (400, 32), C["amber"],
-                  C["amber"], "cap", (12, 6), "midleft", outline=True)
+        self.pill("SIMULATION ONLY · not a deployed security system", (452, 32), C["amber"],
+                  (10, 14, 24), "sb", (14, 6), "midleft")
         if not sim:
             return
         x = CW - 20
@@ -396,8 +435,7 @@ class App:
         r = self.pill(f"Step {sim.t} / {sim.cfg.sim.max_steps}", (x, 32), C["panel2"],
                       C["text"], "monob", (14, 7), "midright")
         x = r.left - 10
-        mlabel = "Method: Proposed (ADTA+CTRE+ATNO)" if sim.method == "proposed" else \
-            "Method: Baseline (fixed threshold)"
+        mlabel = "Proposed method" if sim.method == "proposed" else "Baseline method"
         r = self.pill(mlabel, (x, 32), C["panel2"], C["text"], "sb", (14, 7), "midright")
         x = r.left - 10
         r = self.pill(f"Seed {sim.seed}", (x, 32), C["panel2"], C["text"], "sb", (14, 7),
@@ -464,10 +502,8 @@ class App:
         # what to watch
         p = self.panel((x, 740, w, 206), "What to watch", "guidance")
         if sim:
-            y = self.para(WATCH.get(sim.scenario.key, sim.scenario.description),
-                          (p.x + 16, p.y + 38), w - 32, "s", C["text"], 5)
-            self.para("Expected: " + sim.scenario.expected_text, (p.x + 16, y + 6), w - 32,
-                      "xs", C["dim"], 3)
+            self.para(WATCH.get(sim.scenario.key, sim.scenario.description),
+                      (p.x + 16, p.y + 40), w - 32, "s", C["text"], 7, lh=23)
         # inject faults
         p = self.panel((x, 958, w, CH - 16 - 958), "Inject a fault (live demo)", "F1–F4")
         bw = (w - 24 - 8) // 2
@@ -503,7 +539,7 @@ class App:
         ox, oy, mw, mh = self.map_geom()
         p = self.panel((CENTER_X, 80, CENTER_W, 706))
         self.text("SIMULATION MAP", (p.x + 16, p.y + 12), "cap", C["dim"])
-        self.text(f"{w.width} × {w.height} cells · edge = hard boundary", (p.x + 140, p.y + 11),
+        self.text(f"{w.width} × {w.height} cells · hard boundary", (p.x + 160, p.y + 11),
                   "xs", C["faint"])
         # rover state + waypoint, top-right of the map panel
         rv = sim.rover
@@ -511,9 +547,8 @@ class App:
         mcol = MODE_COLOR.get(rv.mode, C["dim"])
         r = self.pill(f"Rover: {rv.mode}", (p.right - 16, p.y + 22), mcol, (10, 14, 24), "b",
                       (14, 5), "midright")
-        self.text(f"pos {rv.pos}   heading {rv.heading:.0f}°   next waypoint "
-                  f"{nxt if nxt else '—'}", (r.left - 14, p.y + 22), "mono", C["text"],
-                  "midright")
+        self.text(f"pos {rv.pos}  next {nxt if nxt else '—'}  heading {rv.heading:.0f}°",
+                  (r.left - 14, p.y + 22), "mono", C["text"], "midright")
         # axis labels
         for x in range(w.width):
             if x % 2 == 0:
@@ -669,10 +704,10 @@ class App:
         ly = p.bottom - 34
         x = p.x + 18
         planner = "ATNO" if sim.method == "proposed" else "obstacle-only"
+        # zone types are labelled on the map itself, so the legend covers lines and markers
         items = [("route", f"Route ({planner})"), ("ref", "Shortest (reference)"),
                  ("rej", "Rejected route"), ("trail", "Travelled"),
-                 ("zone_e", "Exposure"), ("zone_m", "Monitored"),
-                 ("nogo", "No-go"), ("acc", "Accepted"), ("rejr", "Rejected")]
+                 ("acc", "Report accepted"), ("rejr", "Report rejected")]
         for key, lab in items:
             cy = ly + 10
             if key == "route":
@@ -694,25 +729,24 @@ class App:
                 pygame.draw.polygon(cv, C["red"], [(x + 11, cy - 7), (x + 18, cy),
                                                    (x + 11, cy + 7), (x + 4, cy)], 2)
             x += 28
-            x = self.text(lab, (x, ly + 1), "xs", C["dim"]).right + 14
+            x = self.text(lab, (x, ly), "xs", C["dim"]).right + 22
 
     # ------------------------------------------------------------ event feed
     def draw_feed(self):
         sim = self.sim
-        note = "newest first · heartbeats " + ("shown" if self.show_heartbeats else "hidden")
-        note += " (H)"
+        note = "newest first · H: heartbeats " + ("shown" if self.show_heartbeats else "hidden")
         if sim.method == "baseline":
-            note = "status = fusion checks, which the baseline does NOT apply · " + note
+            note = "status = fusion checks (not used by baseline) · " + note
         p = self.panel((CENTER_X, 798, CENTER_W, CH - 16 - 798), "Event feed — simulated records",
                        note)
-        cols = [("STEP", 64), ("SRC T", 64), ("SOURCE", 128), ("TYPE", 170), ("ZONE", 56),
-                ("CONF", 64), ("AGE", 50), ("STATUS", 330), ("TRUST", 70)]
+        cols = [("STEP", 70), ("SOURCE", 150), ("TYPE", 200), ("CONF", 76), ("AGE", 64),
+                ("STATUS", 364), ("TRUST", 70)]
         x0, y = p.x + 18, p.y + 38
         x = x0
         for name, wd in cols:
             self.text(name, (x, y), "cap", C["faint"])
             x += wd
-        y += 22
+        y += 26
         rows = [o for o in sim.recent_obs
                 if self.show_heartbeats or o["event_type"] != "status" or o["flags"]]
         if not rows:
@@ -724,16 +758,15 @@ class App:
                 msg = "No zone reports yet. Status heartbeats are hidden (press H to show)."
             self.text(msg, (p.centerx, p.y + 130), "m", C["faint"], "center")
             return
-        row_h = 26
+        row_h = 32
         max_rows = (p.bottom - 10 - y) // row_h
         for o in rows[:max_rows]:
             rejected = not o["accepted"]
             missing = o["event_type"] == "heartbeat_timeout"
             if rejected and not missing:
-                pygame.draw.rect(self.canvas, (64, 22, 30), (p.x + 8, y - 3, p.w - 16, row_h - 2),
+                pygame.draw.rect(self.canvas, (64, 22, 30), (p.x + 8, y - 4, p.w - 16, row_h - 3),
                                  border_radius=5)
-            vals = [str(o["received_step"]), str(o["step"]), o["source_id"],
-                    o["event_type"], o["zone_id"] or "—",
+            vals = [str(o["received_step"]), o["source_id"], o["event_type"],
                     "—" if o["confidence"] is None else f"{o['confidence']:.2f}",
                     str(o["age_at_arrival"])]
             x = x0
@@ -743,23 +776,22 @@ class App:
             # status badges
             bx = x
             if missing:
-                bx = self.pill("MISSING", (bx, y + 9), C["amber"], (10, 14, 24), "cap", (8, 3),
+                bx = self.pill("MISSING", (bx, y + 11), C["amber"], (10, 14, 24), "cap", (8, 3),
                                "midleft").right + 8
-                self.text("no message within timeout; not treated as 'clear'", (bx, y), "xs",
-                          C["amber_light"])
+                self.text("silent — not treated as 'clear'", (bx, y), "xs", C["amber_light"])
             elif rejected:
-                bx = self.pill("REJECTED", (bx, y + 9), C["red"], (255, 255, 255), "cap",
+                bx = self.pill("REJECTED", (bx, y + 11), C["red"], (255, 255, 255), "cap",
                                (8, 3), "midleft").right + 6
                 for f in o["flags"]:
-                    bx = self.pill(FLAG_LABEL.get(f, f.upper()), (bx, y + 9), C["red"], C["red"],
+                    bx = self.pill(FLAG_LABEL.get(f, f.upper()), (bx, y + 11), C["red"], C["red"],
                                    "cap", (7, 2), "midleft", outline=True).right + 5
             else:
-                bx = self.pill("ACCEPTED", (bx, y + 9), C["green"], (10, 14, 24), "cap", (8, 3),
+                bx = self.pill("ACCEPTED", (bx, y + 11), C["green"], (10, 14, 24), "cap", (8, 3),
                                "midleft").right + 6
                 for f in o["flags"]:
-                    bx = self.pill(FLAG_LABEL.get(f, f.upper()), (bx, y + 9), C["amber"],
+                    bx = self.pill(FLAG_LABEL.get(f, f.upper()), (bx, y + 11), C["amber"],
                                    C["amber"], "cap", (7, 2), "midleft", outline=True).right + 5
-            x += cols[7][1]
+            x += cols[5][1]
             tr = o.get("trust_after")
             if tr not in (None, ""):
                 self.text(f"{tr:.2f}", (x, y), "monos", C["dim"])
@@ -795,42 +827,40 @@ class App:
         tw = (RIGHT_W - 32 - 10) // 2
         for i, (lab, val, unit) in enumerate(tiles):
             tx = p.x + 16 + (i % 2) * (tw + 10)
-            ty = p.y + 80 + (i // 2) * 54
-            pygame.draw.rect(self.canvas, C["panel2"], (tx, ty, tw, 50), border_radius=8)
-            self.text(lab, (tx + 10, ty + 4), "xs", C["dim"])
-            r = self.text(val, (tx + 10, ty + 23), "b", C["text"])
+            ty = p.y + 78 + (i // 2) * 56
+            pygame.draw.rect(self.canvas, C["panel2"], (tx, ty, tw, 52), border_radius=8)
+            self.text(lab, (tx + 10, ty + 3), "xs", C["dim"])
+            r = self.text(val, (tx + 10, ty + 24), "b", C["text"])
             if unit and val != "—":
                 self.text(unit, (r.right + 6, ty + 27), "xs", C["faint"])
 
     def draw_trust(self):
         sim = self.sim
-        note = "" if sim.method == "proposed" else "not used by baseline"
+        note = "tick = starting trust" if sim.method == "proposed" else "not used by baseline"
         p = self.panel((RIGHT_X, 288, RIGHT_W, 258), "ADTA · trust score per source (0–1)", note)
         y = p.y + 40
         for s, meta in SOURCES.items():
             t = sim.adta.trust[s]
             init = sim.adta.initial[s]
             col = C["green"] if t >= 0.6 else (C["amber"] if t >= 0.35 else C["red"])
-            self.text(s, (p.x + 16, y), "monob", C["text"])
-            self.text(meta["type"], (p.x + 140, y + 1), "xs", C["faint"])
-            self.bar((p.x + 210, y + 4, 170, 12), t, col, init)
+            nr = self.text(s, (p.x + 16, y), "monob", C["text"])
+            self.text(meta["type"], (p.x + 150, nr.centery), "xs", C["faint"], "midleft")
+            self.bar((p.x + 220, y + 5, 160, 12), t, col, init)
             self.text(f"{t:.2f}", (p.right - 16, y), "monob", col, "topright")
             reason = sim.adta.last_reason.get(s, "")
             if s in sim.fusion.missing:
                 reason = "SILENT (missing) · " + reason
-            rcol = C["dim"] if reason in ("initial", "valid") or reason.startswith("valid") \
-                else C["amber_light"]
-            self.text(self.fit("last: " + reason, "xs", RIGHT_W - 48), (p.x + 16, y + 22), "xs",
+            reason, warn = readable_reason(reason)
+            rcol = C["amber_light"] if warn or s in sim.fusion.missing else C["dim"]
+            self.text(self.fit("last: " + reason, "xs", RIGHT_W - 32), (p.x + 16, y + 24), "xs",
                       rcol)
-            y += 50
-        self.text("Tick = starting trust.  Weight = trust × confidence × freshness.", (p.x + 16,
-                  p.bottom - 24), "xs", C["faint"])
+            y += 53
 
     def draw_ctre(self):
         sim = self.sim
         a = sim.assessment
-        title = "CTRE · reasoning about the situation" if sim.method == "proposed" else \
-            "Baseline · fixed confidence threshold"
+        title = "CTRE · situation reasoning" if sim.method == "proposed" else \
+            "Baseline · fixed threshold"
         p = self.panel((RIGHT_X, 558, RIGHT_W, 300), title, "staged scenario labels")
         state = a.state if a else None
         # state ladder
@@ -869,25 +899,25 @@ class App:
         lines = []
         for e in a.supporting:
             if "weight" in e:
-                lines.append((C["green"], f"+ {e['source_id']} {e['event_type']}  w {e['weight']:.2f}"))
+                lines.append((C["green"], f"+ {e['source_id']}  {e['event_type']}  w {e['weight']:.2f}"))
             else:
                 lines.append((C["green"], f"+ {e['source_id']}  conf {e['confidence']:.2f}"))
         for e in a.conflicting:
-            lines.append((C["amber"], f"− {e['source_id']} {e['event_type']}  w {e['weight']:.2f}"
-                                      "  (conflicts)"))
+            lines.append((C["amber"], f"− {e['source_id']}  {e['event_type']}  w {e['weight']:.2f}"
+                                      "  conflicts"))
         for e in a.rejected:
-            lines.append((C["red"], f"× {e['source_id']} {e['event_type']}  rejected: "
-                                    f"{', '.join(FLAG_LABEL.get(f, f) for f in e['flags'])}"))
+            flags = ", ".join(FLAG_LABEL.get(f, f).lower() for f in e["flags"])
+            lines.append((C["red"], f"× {e['source_id']}  REJECTED: {flags}"))
         for s in a.missing:
-            lines.append((C["amber_light"], f"? {s} silent — coverage gap, not 'clear'"))
+            lines.append((C["amber_light"], f"? {s} silent (not treated as clear)"))
         if a.pending:
-            lines.insert(0, (C["dim"], f"Persistence filter: holding {a.state}, raw {a.pending}"))
+            lines.insert(0, (C["dim"], f"Holding {a.state}: raw {a.pending}"))
         if not lines:
             lines = [(C["faint"], "No zone evidence in the current window.")]
-        max_lines = (p.bottom - 40 - y) // 21
+        max_lines = (p.bottom - 40 - y) // 24
         for col, ln in lines[:max_lines]:
             self.text(self.fit(ln, "monos", RIGHT_W - 32), (p.x + 16, y), "monos", col)
-            y += 21
+            y += 24
         if len(lines) > max_lines:
             self.text(f"+{len(lines) - max_lines} more in the run log", (p.x + 16, y), "xs",
                       C["faint"])
@@ -904,10 +934,9 @@ class App:
         d = sim.decision
         if not d:
             self.text("No action yet.", (p.x + 16, p.y + 44), "l", C["faint"])
-            self.text("Allowed: continue · wait · investigate from a safe point · reroute ·",
-                      (p.x + 16, p.y + 84), "xs", C["dim"])
-            self.text("stop with alert · safe stop. No pursuit or interception exists.",
-                      (p.x + 16, p.y + 104), "xs", C["dim"])
+            self.para("Allowed: continue · wait · investigate from a safe point · reroute · "
+                      "stop with alert · safe stop. No pursuit or interception exists.",
+                      (p.x + 16, p.y + 84), RIGHT_W - 32, "xs", C["dim"], 3)
             return
         col = ACTION_COLOR.get(d.action, C["text"])
         r = self.pill(d.action.replace("_", " "), (p.x + 16, p.y + 52), col, (10, 14, 24), "bl",

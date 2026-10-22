@@ -62,18 +62,18 @@ fullscreen. Every value on screen is read from the running simulation.
 
 | Area | What it shows |
 |---|---|
-| **Top bar** | Current scenario, seed, method, step counter and run status (READY / RUNNING / PAUSED / DONE). A banner on the map confirms every scenario load, reset, method change and seed change. |
+| **Top bar** | A filled amber "Simulation only" badge, plus current scenario, seed, method, step counter and run status (READY / RUNNING / PAUSED / DONE). A banner on the map confirms every scenario load, reset, method change and seed change. |
 | **Left: Scenario** | Scenarios A–G as a list. The selected one is highlighted. |
 | **Left: Run controls** | Start/Pause, Step, Reset, a Proposed/Baseline method switch, seed − / + and speed − / +. Each control shows its keyboard key. |
-| **Left: What to watch** | A short note on what the audience should notice in this scenario, plus its pre-written expected behaviour. This is guidance text, not data. |
+| **Left: What to watch** | A short note on what the audience should notice in this scenario. This is guidance text, not data. The pre-written expected behaviour is checked in the response panel when the run ends. |
 | **Left: Inject a fault** | Stale record, duplicate, invalid value or conflict, injected into the live run. The run is then marked as manually injected. |
 | **Centre: Map** | Grid with axis labels and a hard-boundary frame, plus obstacles, start `S`, `GOAL`, zone Z1 and its status tag. |
 | **Map: Rover** | Rover with heading arrow, next-waypoint ring, mode, position and heading. |
 | **Map: Routes** | Blue line: planned route. Dashed grey line: the obstacle-only shortest path, for reference. Dashed red line: a rejected unsafe route. Dots: cells travelled. |
-| **Map: Reports and overlays** | Markers for recent reports (green = accepted, red outline = rejected). The legend sits under the map. Overlays show ready, GOAL REACHED and SAFE STOP with the reason. |
-| **Centre: Event feed** | Each simulated record with arrival step, source step, source, type, zone, confidence, age and the source's trust after the update. Rejected rows are tinted red with STALE / DUPLICATE / INVALID / IMPLAUSIBLE badges; delayed and missing records get amber badges. |
+| **Map: Reports and overlays** | Markers for recent reports (green = accepted, red outline = rejected). The legend under the map covers route lines and report markers; zone types are labelled on the map itself. Overlays show ready, GOAL REACHED and SAFE STOP with the reason. |
+| **Centre: Event feed** | Each simulated record with arrival step, source, type, confidence, age at arrival (in steps) and the source's trust after the update. The source timestamp and zone are in the run log. Rejected rows are tinted red with STALE / DUPLICATE / INVALID / IMPLAUSIBLE badges; delayed and missing records get amber badges. |
 | **Right: Run status** | Outcome, plus route distance and route exposure cost as separate values (remaining, or planned before the first step). Also distance travelled and zone exposure incurred. |
-| **Right: ADTA** | One 0–1 trust bar per source. The tick marks starting trust. The last update reason turns amber when it is not a plain "valid". |
+| **Right: ADTA** | One 0–1 trust bar per source. The tick marks starting trust. The last update reason is shown in plain words (for example "disagrees with range-1 (no penalty)") and turns amber for a penalty or a disagreement. Bookkeeping codes such as the probation and rise cap appear only in the run log. |
 | **Right: CTRE** | State ladder, a plain-language meaning, the rule that fired, and support vs against scores. The evidence list marks supporting (+), conflicting (−), rejected (×) and silent (?) sources. It also shows what the other method decides on the same inputs. |
 | **Right: Selected safe response** | The action after the safety check, its reason, any alert or safety override, and at the end whether the outcome matched the scenario's expected behaviour. |
 
